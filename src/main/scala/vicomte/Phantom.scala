@@ -1,11 +1,10 @@
 package vicomte
 
-import org.openqa.selenium.phantomjs.PhantomJSDriver
 import scala.scalajs.js
-import org.json4s.jackson.JsonMethods._
-import js.annotation._
+import scala.scalajs.js.annotation._
 
 @JSName("phantom")
+@js.native
 trait Phantom extends js.Object {
   /**
    * Get or set Cookies for any domain (though, for setting, use of phantom.addCookie is preferred). These Cookies
@@ -14,7 +13,7 @@ trait Phantom extends js.Object {
    * startup config/command-line options, if any.
    * Introduced: PhantomJS 1.7
    */
-  var cookies: js.Dictionary = js.native
+  var cookies: js.Dictionary[js.Object] = js.native
 
 
   /**
@@ -34,7 +33,7 @@ trait Phantom extends js.Object {
    * Read-only. The version of the executing PhantomJS instance.
    * Example value: { 'major': 1, 'minor': 7, 'patch': 0 }.
    */
-  var version: js.Dictionary = js.native
+  var version: js.Dictionary[Int] = js.native
 
   /**
    * Add a Cookie to the CookieJar.
@@ -43,7 +42,7 @@ trait Phantom extends js.Object {
    * @param cookie
    * @return
    */
-  def addCookie(cookie: js.Dictionary): Boolean = js.native
+  def addCookie(cookie: js.Dictionary[js.Object]): Boolean = js.native
 
   /**
    * Delete all Cookies in the CookieJar.
@@ -85,6 +84,6 @@ trait Phantom extends js.Object {
    * @param cb (msg, trace) => ()
    * @return
    */
-  def onError(cb: (String, Seq[js.Dictionary]) => Unit) = js.native
+  def onError(cb: (String, Seq[js.Object]) => Unit) = js.native
 }
 
